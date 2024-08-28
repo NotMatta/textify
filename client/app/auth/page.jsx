@@ -5,21 +5,24 @@ import { User , Key} from "lucide-react"
 import { AlertDialog, AlertDialogTitle, AlertDialogAction,AlertDialogFooter , AlertDialogDescription, AlertDialogContent, AlertDialogTrigger, AlertDialogHeader } from "@/components/ui/alert-dialog"
 import { useEffect, useState } from "react"
 import { useSocket } from "@/components/socket-provider"
+import { useToast } from "@/components/ui/use-toast"
 
 const LoginPage = () => {
     const socket = useSocket()
+    const {toast} = useToast()
     const [load,setLoading] =  useState(false)
     const HandleSubmit = (formEvent) => {
         formEvent.preventDefault()
         const formData = new FormData(formEvent.target)
-        socket.emit("login",{userName:formData.get("username"),password:formData.get("password")})
+        socket.emit("login",{username:formData.get("username"),password:formData.get("password")})
     }
 
     useEffect(() => {
         socket?.on("auth",(data) => {
             console.log(data)
+            toast({title:"Info",description:data.msg})
         })
-    },[socket])
+    },[socket,toast])
 
     return (
         <div className="flex w-full h-full justify-center items-center">
