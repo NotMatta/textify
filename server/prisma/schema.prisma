@@ -12,8 +12,8 @@ model User {
     username    String   @unique
     password    String
     pfp         String?   
-    friends1     FriendsRelation[] @relation("Sender")
-    friends2     FriendsRelation[] @relation("Accepter")
+    friends1    Friendship[] @relation("Sender")
+    friends2    Friendship[] @relation("Accepter")
     socket      UserSocket?
 }
 
@@ -24,7 +24,7 @@ model UserSocket {
     socketId    String
 }
 
-model FriendsRelation {
+model Friendship {
     id          Int     @id @default(autoincrement())
     User1       User    @relation(fields:[userId1],"Sender",references:[id])
     User2       User    @relation(fields:[userId2],"Accepter",references:[id])

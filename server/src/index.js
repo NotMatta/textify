@@ -1,4 +1,5 @@
 import { DisconnectSocket, HandleAuth, Validate } from "../utils/auth.js"
+import { HandleFriendRequest } from "../utils/friends.js"
 import { io } from "./socket.js"
 
 
@@ -12,4 +13,5 @@ io.on("connection", async (socket) => {
     })
     HandleAuth(socket)
     Validate(socket)
+    HandleFriendRequest(socket)
 })

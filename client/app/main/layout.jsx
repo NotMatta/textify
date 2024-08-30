@@ -1,3 +1,4 @@
+import AddFriendForm from "@/components/addfriend-form"
 import { Input } from "@/components/ui/input"
 import { Search, UserRoundPlus,CopyPlus, Circle } from "lucide-react"
 
@@ -8,9 +9,7 @@ const Layout = ({children}) => {
                 <div className="flex justify-between items-center">
                     <h1 className="text-4xl font-bold">Textify</h1>
                     <div className="flex gap-1">
-                        <button className="bg-border rounded-full size-8 flex items-center justify-center">
-                            <UserRoundPlus/>
-                        </button>
+                        <AddFriendForm/>
                         <button className="bg-border rounded-full size-8 flex items-center justify-center">
                             <CopyPlus/>
                         </button>
