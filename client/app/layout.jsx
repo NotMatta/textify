@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SocketProvider } from "@/components/socket-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "@/components/session-provider";
+import ConnectionChecker from "@/components/connection-checker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
                 <SocketProvider>
                     <SessionProvider>
                         <ThemeProvider attribute="class" defaultTheme="dark">
+                            <ConnectionChecker/>
                             <Toaster/>
                             {children}
                         </ThemeProvider>

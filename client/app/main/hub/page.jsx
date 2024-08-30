@@ -1,3 +1,5 @@
+"use client"
+
 const HubPage = () => {
     return (
         <div>Yee</div>

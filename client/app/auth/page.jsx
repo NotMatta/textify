@@ -29,6 +29,23 @@ const LoginPage = () => {
         })
     },[socket,toast,router])
 
+    const LazySignIn = () => {
+        return (
+            <AlertDialog>
+                <AlertDialogTrigger className="opacity-50 text-xm">Don&apos;t have an account?</AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Account Creation:</AlertDialogTitle>
+                        <AlertDialogDescription>type an unregistered username with a well made password and we will make you one who needs to create an account anyway</AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogAction>Got it!</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+        )
+    }
+
     return (
         <div className="flex w-full h-full justify-center items-center">
             <form className="border px-2 py-4 w-4/5 max-w-96 flex flex-col items-center rounded-2xl gap-2" onSubmit={HandleSubmit}>
@@ -42,18 +59,7 @@ const LoginPage = () => {
                     <Input placeholder="Password here" className="border-none" type="password" required name="password"/>
                 </div>
                 <Button className="w-full" type="submit">Sign in</Button>
-                <AlertDialog>
-                    <AlertDialogTrigger className="opacity-50 text-xm">Don&apos;t have an account?</AlertDialogTrigger>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Account Creation:</AlertDialogTitle>
-                            <AlertDialogDescription>type an unregistered username with a well made password and we will make you one who needs to create an account anyway</AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogAction>Got it!</AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
+                <LazySignIn/>
             </form>
         </div>
     )
