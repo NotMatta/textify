@@ -3,14 +3,16 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { User , Key} from "lucide-react"
 import { AlertDialog, AlertDialogTitle, AlertDialogAction,AlertDialogFooter , AlertDialogDescription, AlertDialogContent, AlertDialogTrigger, AlertDialogHeader } from "@/components/ui/alert-dialog"
-import { useEffect, useState } from "react"
+import { useEffect,} from "react"
 import { useSocket } from "@/components/socket-provider"
 import { useToast } from "@/components/ui/use-toast"
+import Cookies from "js-cookie"
+import { useRouter } from "next/navigation"
 
 const LoginPage = () => {
     const socket = useSocket()
     const {toast} = useToast()
-    const [load,setLoading] =  useState(false)
+    const router = useRouter()
     const HandleSubmit = (formEvent) => {
         formEvent.preventDefault()
         const formData = new FormData(formEvent.target)
@@ -21,8 +23,11 @@ const LoginPage = () => {
         socket?.on("auth",(data) => {
             console.log(data)
             toast({title:"Info",description:data.msg})
+            Cookies.set("token",data.token,{expires: 1})
+            socket.off("auth")
+            router.push("/main/hub")
         })
-    },[socket,toast])
+    },[socket,toast,router])
 
     return (
         <div className="flex w-full h-full justify-center items-center">

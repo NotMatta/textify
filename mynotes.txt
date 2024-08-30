@@ -1,0 +1,2 @@
+Note to myself: you decided that doing sessions is a waste of time and that you can get user info whenver you want even upon loggin in in a global state and the session doesn't need to be a cookie only the token does, and all the info can be stored in a use context object instead upon loggin in to simplify session management.
+Another note to myself I need to seperate my "socket on"s so I can keep a clean base and just import eveything later on
