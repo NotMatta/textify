@@ -35,7 +35,7 @@ const AddFriendForm = () => {
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel><Button variant="outline">Cancel</Button></AlertDialogCancel>
+                    <AlertDialogCancel className="border border-primary p-2 rounded-lg">Cancel</AlertDialogCancel>
                     <AlertDialogAction disabled={username == session.data.username} onClick={HandleRequest}>{username == session.data.username ? ":)" : "Got it!"}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
